@@ -11,21 +11,23 @@
 		<div id="brandname">
 			ML App
 		</div>
-		<h2>Spam Detector For SMS Messages</h2>
+		<h2>Urgency Detector For Online Tweet</h2>
 		
 	</div>
 	</header>
-	<p style="color:blue;font-size:20;text-align: center;"><b>Results for Comment</b></p>
+	<p style="color:blue;font-size:20;text-align: center;"><b>Result for Tweet</b></p>
+	
 	{% block content %}
 	<div class="results">
 
-		{% if prediction == 1 %}
-		<h2 style="color:red;">Urgent.</h2>
-		{% elif prediction == 0 %}
-		<h2 style="color:blue;">Not urgent.</h2>
+		{% if prediction == "LABEL_1" %}
+		<h2 style="color:red;">Urgent Message. Need Support.</h2>
+		{% elif prediction == "LABEL_0" %}
+		<h2 style="color:blue;">Non-urgent Message.</h2>
 		{% endif %}
 
 	</div>
     {% endblock %}
+    
 </body>
 </html>
