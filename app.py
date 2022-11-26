@@ -4,13 +4,15 @@ import torch
 import transformers
 from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
+from transformers import BertConfig, BertForSequenceClassification, BertTokenizer
+from transformers import pipeline
 
 from flask import Flask,render_template,request
 
 
 app = Flask(__name__)
-tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
-model = AutoModelForSequenceClassification.from_pretrained("./urgent_bert")
+bert_tokenizer = BertTokenizer.from_pretrained("./bert_base_model")
+bert_model = BertForSequenceClassification.from_pretrained("./bert_base_model")
 
 
 def get_pred(sentences):
@@ -36,19 +38,20 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 	message = request.form['message']
-	pred = get_pred(message)
-	vect = 0
-	#prediction = model.predict(vect)
-	#output = prediction[0]
-	if vect == 0:
-		my_prediction = 0
-	else:
-		my_prediction = 1
+	bert_classifier = pipeline(task="text-classification", 
+								model=bert_model,
+								tokenizer=bert_tokenizer)	
+	output = bert_classifier(message)
+	label = output[0]["label"]
+
+	#if label == "LABEL_1":
+	#	outcome = "Urgent Message"
+	#else:
+	#	outcome = "Non-urgent Message"
 	
-	res = render_template('result.html', prediction=my_prediction)
+	res = render_template('result.html', prediction=label)
 	
 	return res
-
 
 
 if __name__ == '__main__':
