@@ -9,17 +9,17 @@
 	<header>
 		<div class="container">
 		<div id="brandname">
-			ML App
+			Crisis Identifier App Demo
 		</div>
 		<h2>Urgency Detector For Online Tweet</h2>
 		
 	</div>
 	</header>
-	<p style="color:blue;font-size:20;text-align: center;"><b>Result for Tweet</b></p>
+	<p style="color:green;font-size:30;text-align: center;"><b>Result for Tweet</b></p>
 	
 	{% block content %}
 	<div class="results">
-
+		<h2> {{ message }} </h2>
 		{% if prediction == "LABEL_1" %}
 		<h2 style="color:red;">Urgent Message. Need Support.</h2>
 		{% elif prediction == "LABEL_0" %}
@@ -28,6 +28,6 @@
 
 	</div>
     {% endblock %}
-    
+
 </body>
 </html>
