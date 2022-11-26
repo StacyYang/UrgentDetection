@@ -49,7 +49,7 @@ def predict():
 	#else:
 	#	outcome = "Non-urgent Message"
 	
-	res = render_template('result.html', prediction=label)
+	res = render_template('result.html', prediction=label, message=message)
 	
 	return res
 
