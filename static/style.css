@@ -13,17 +13,17 @@ body {
 header {
     background: #03A9F4;
     border-bottom: #448AFF 3px solid;
-    height:120px;
-    width:100%;
-    padding-top:30px;
+    height: 120px;
+    width: 100%;
+    padding-top: 30px;
 }
 
 .main-header {
     text-align: center;
     background-color: blue;
-    height:100px;
-    width:100%;
-    margin:0px;
+    height: 100px;
+    width: 100%;
+    margin: 0px;
 }
 
 #brandname {
@@ -40,8 +40,8 @@ header h2 {
 
 .btn-info {
     background-color: #2196F3;
-    height:40px;
-    width:100px;
+    height: 40px;
+    width: 100px;
 } /* Blue */
 
 .btn-info:hover {
