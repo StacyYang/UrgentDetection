@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tweet Prediction</title>
+    {% block head %}
+    <title> {% block title %} {% endblock %} </title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    {% endblock %}
 </head>
 <body>
     <header>
@@ -11,25 +13,16 @@
                 Machine Learning App Demo
             </div>
             <div id="project">
-                Urgency Detector For Online Tweet
+                {% block project %}
+                {% endblock %}
             </div>
         </div>
     </header>
 
-    {% block content %}
-    <div>
-        <h2>Tweet from Current User:</h2>
-        <p> {{ message }} </p>
-        <h2>Method of Classifying Tweets:</h2>
-        <p> {{ model }} </p>
-        <h1>Result:</h1>
-        {% if prediction == "LABEL_1" %}
-        <h2 style="color:red;">Urgent Message. Need Support.</h2>
-        {% elif prediction == "LABEL_0" %}
-        <h2 style="color:blue;">Non-urgent Message.</h2>
-        {% endif %}
+    <div id="content">
+        {% block content %}
+        {% endblock %}
     </div>
-    {% endblock %}
 
 </body>
 </html>
