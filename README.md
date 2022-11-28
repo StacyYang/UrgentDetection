@@ -1,0 +1,2 @@
+# Detecting Urgency in Online Messages
+This Flask application is a demo in exhibiting the usefulness of pretrained Machine Learning models in notifying the broader community when an individual faces crises, whether it is in physical or mental states. In other words, this application shows the power of Machine Learning models when it comes to detecting urgency shown in texts, e.g. tweets, social media posts, etc.
