@@ -6,6 +6,7 @@ from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
 from transformers import BertConfig, BertTokenizer, BertForSequenceClassification
 from transformers import DistilBertConfig, DistilBertTokenizer, DistilBertForSequenceClassification
+from transformers import ErnieConfig, ErnieForSequenceClassification
 from transformers import pipeline
 
 from flask import Flask, render_template, request
@@ -13,12 +14,15 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-
+# Bert 
 bert_tokenizer = BertTokenizer.from_pretrained("./bert_base_model")
 bert_model = BertForSequenceClassification.from_pretrained("./bert_base_model")
+# Distil Bert
 distilbert_tokenizer = DistilBertTokenizer.from_pretrained("./distilbert_base_model")
 distilbert_model = DistilBertForSequenceClassification.from_pretrained("./distilbert_base_model")
-
+# Ernie 2.0 EN
+ernie_tokenizer = BertTokenizer.from_pretrained("./ernie_2_base_model")
+ernie_model = ErnieForSequenceClassification.from_pretrained("./ernie_2_base_model")
 
 @app.route('/', methods=['POST','GET'])
 def home():
@@ -38,6 +42,10 @@ def predict():
         classifier = pipeline(task="text-classification",
                             model=distilbert_model,
                             tokenizer=distilbert_tokenizer)
+    elif selected_model == "ERNIE":
+    	classifier = pipeline(task="text-classification",
+    		                model=ernie_model,
+    		                tokenizer=ernie_tokenizer)
 
     output = classifier(message)
     label = output[0]["label"]
