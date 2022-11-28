@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-
-	<header>
-		<div class="container">
-		<div id="brandname">
-			Crisis Identifier App Demo
-		</div>
-		<h2>Urgency Detector for Online Tweets</h2>
+    <header>
+        <div class="container">
+            <div id="brandname">
+                Crisis Identifier App Demo
+            </div>
+            <h1>Urgency Detector for Online Tweets</h1>
 		
-	</div>
-	</header>
+        </div>
+    </header>
 
-	<div class="ml-container">
+    <div class="ml-container">
+        <form action="{{ url_for('predict')}}" method="POST">
+            <p>Please select your desired algorithmic model for crisis notification:</p>
+            <input type="radio" id="bert" name="model" value="BERT">
+            <label for="bert">BERT</label><br>
+            
+            <input type="radio" id="distilbert" name="model" value="DISTILBERT">
+            <label for="distilbert">DISTIL BERT</label><br>
+            
+            <!-- <input type="radio" id="ernie" name="model" value="ERNIE"> -->
+            <!-- <label for="ernie">ERNIE</label> -->
 
-		<form action="{{ url_for('predict')}}" method="POST">
-			<p>Enter Your Message Here</p>
-			<!-- <input type="text" name="comment"/> -->
-			<textarea name="message" rows="4" cols="50"></textarea>
-			<br/>
+            <p>Enter Your Message Here</p>
+            <textarea name="message" rows="4" cols="50"></textarea>
+            <br/>
 
-		<input type="submit" class="btn-info" value="Predict">
+            <input type="submit" class="btn-info" value="Predict">
 		
-		</form>
+        </form>
 		
-	</div>
-
-	
-	
-
+    </div>
+    
 </body>
 </html>
