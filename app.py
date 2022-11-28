@@ -17,9 +17,12 @@ app = Flask(__name__)
 # Bert 
 bert_tokenizer = BertTokenizer.from_pretrained("./bert_base_model")
 bert_model = BertForSequenceClassification.from_pretrained("./bert_base_model")
-# Distil Bert
+# Distil Bert Base 
 distilbert_tokenizer = DistilBertTokenizer.from_pretrained("./distilbert_base_model")
 distilbert_model = DistilBertForSequenceClassification.from_pretrained("./distilbert_base_model")
+# Distil Bert Amazon Reviews
+dbert2_tokenizer = DistilBertTokenizer.from_pretrained("./reviews_sentiment_distilbert_model")
+dbert2_model = DistilBertForSequenceClassification.from_pretrained("./reviews_sentiment_distilbert_model")
 # Ernie 2.0 EN
 ernie_tokenizer = BertTokenizer.from_pretrained("./ernie_2_base_model")
 ernie_model = ErnieForSequenceClassification.from_pretrained("./ernie_2_base_model")
@@ -42,7 +45,11 @@ def predict():
         classifier = pipeline(task="text-classification",
                             model=distilbert_model,
                             tokenizer=distilbert_tokenizer)
-    elif selected_model == "ERNIE":
+    elif selected_model == "DISTILBERT-REVIEWS":
+        classifier = pipeline(task="text-classification",
+                            model=dbert2_model,
+                            tokenizer=dbert2_tokenizer)    
+    else: #if selected_model == "ERNIE"
     	classifier = pipeline(task="text-classification",
     		                model=ernie_model,
     		                tokenizer=ernie_tokenizer)
