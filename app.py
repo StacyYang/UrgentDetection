@@ -27,7 +27,7 @@ dbert2_model = DistilBertForSequenceClassification.from_pretrained("./reviews_se
 ernie_tokenizer = BertTokenizer.from_pretrained("./ernie_2_base_model")
 ernie_model = ErnieForSequenceClassification.from_pretrained("./ernie_2_base_model")
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/')
 def home():
     return render_template('home.html')
 
