@@ -2,21 +2,24 @@
 <html>
 <head>
     <title>Tweet Prediction</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
         <div class="container">
             <div id="brandname">
-                Crisis Identifier App Demo
+                Machine Learning App Demo
             </div>
-            <h1>Urgency Detector For Online Tweet</h1>
+            <div id="project">
+                Urgency Detector For Online Tweet
+            </div>
         </div>
     </header>
-	
+	<!-- <a href="{{ url_for('/')}}" class="previous">&laquo; Back</a> -->
+
     {% block content %}
-    <div class="results">
-        <h2>Tweet from Current User</h2>
+    <div>
+        <h2>Tweet from Current User:</h2>
         <p> {{ message }} </p>
         <h2>Method of Classifying Tweets:</h2>
         <p> {{ model }} </p>
