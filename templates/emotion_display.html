@@ -1,0 +1,27 @@
+{% extends "result.html" %}
+
+{% block title %}
+    Emotion Prediction
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block project %}
+    Emotion Indicator for Audio and Text
+{% endblock %}
+
+{% block content %}
+    <h1>Audio File</h1>
+    <p>{{ audiofile }}</p>
+    <h1>Text File</h1>
+    <p>{{ textfile }}</p>
+    <h1>Result:</h1>
+    <p>Not Yet Available</p>
+    <!-- {% if prediction == "LABEL_1" %}
+    <h2 style="color:red;">Urgent Message. Need Support.</h2>
+    {% elif prediction == "LABEL_0" %}
+    <h2 style="color:blue;">Non-urgent Message.</h2>
+    {% endif %} -->
+{% endblock%}
