@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+    <title>Tweet Prediction</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-
-	<header>
-		<div class="container">
-		<div id="brandname">
-			Crisis Identifier App Demo
-		</div>
-		<h2>Urgency Detector For Online Tweet</h2>
-		
-	</div>
-	</header>
-	<p style="color:green;font-size:30;text-align: center;"><b>Result for Tweet</b></p>
+    <header>
+        <div class="container">
+            <div id="brandname">
+                Crisis Identifier App Demo
+            </div>
+            <h1>Urgency Detector For Online Tweet</h1>
+        </div>
+    </header>
 	
-	{% block content %}
-	<div class="results">
-		<h2> {{ message }} </h2>
-		{% if prediction == "LABEL_1" %}
-		<h2 style="color:red;">Urgent Message. Need Support.</h2>
-		{% elif prediction == "LABEL_0" %}
-		<h2 style="color:blue;">Non-urgent Message.</h2>
-		{% endif %}
-
-	</div>
+    {% block content %}
+    <div class="results">
+        <h2>Tweet from Current User</h2>
+        <p> {{ message }} </p>
+        <h2>Method of Classifying Tweets:</h2>
+        <p> {{ model }} </p>
+        <h1>Result:</h1>
+        {% if prediction == "LABEL_1" %}
+        <h2 style="color:red;">Urgent Message. Need Support.</h2>
+        {% elif prediction == "LABEL_0" %}
+        <h2 style="color:blue;">Non-urgent Message.</h2>
+        {% endif %}
+    </div>
     {% endblock %}
 
 </body>
