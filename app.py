@@ -57,10 +57,13 @@ def predict():
     output = classifier(message)
     label = output[0]["label"]
 
-    res = render_template('result.html', prediction=label, 
+    res = render_template('crisis_notify.html', prediction=label, 
                         message=message, model=selected_model)
     return res
 
+@app.route('/reveal', methods=['POST'])
+def reveal():
+    pass
 
 if __name__ == '__main__':
 	app.run(debug=True)
