@@ -1,9 +1,6 @@
 import pandas as pd 
 import torch
 
-import transformers
-from transformers import AutoModelForSequenceClassification
-from transformers import AutoTokenizer
 from transformers import BertConfig, BertTokenizer, BertForSequenceClassification
 from transformers import DistilBertConfig, DistilBertTokenizer, DistilBertForSequenceClassification
 from transformers import ErnieConfig, ErnieForSequenceClassification
@@ -63,10 +60,10 @@ def predict():
 
 @app.route('/reveal', methods=['POST'])
 def reveal():
-    csv_file = request.form['csvfile']
+    afile = request.form['audiofile']
     
     return render_template('emotion_display.html',
-                        csvfile=csv_file)
+                        audiofile=afile)
 
 if __name__ == '__main__':
 	app.run(debug=True)
