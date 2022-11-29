@@ -63,11 +63,10 @@ def predict():
 
 @app.route('/reveal', methods=['POST'])
 def reveal():
-    aFile = request.form['audiofile']
-    tFile = request.form['textfile']
+    csv_file = request.form['csvfile']
+    
     return render_template('emotion_display.html',
-                        audiofile=aFile,
-                        textfile=tFile)
+                        csvfile=csv_file)
 
 if __name__ == '__main__':
 	app.run(debug=True)
