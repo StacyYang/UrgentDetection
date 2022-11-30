@@ -14,12 +14,15 @@
 
 {% block content %}
     <h1>Audio File:</h1>
-    <p>{{ audiofile }}</p>
-    <h1>Result:</h1>
-    <p>Not Yet Available</p>
-    <!-- {% if prediction == "LABEL_1" %}
-    <h2 style="color:red;">Urgent Message. Need Support.</h2>
-    {% elif prediction == "LABEL_0" %}
-    <h2 style="color:blue;">Non-urgent Message.</h2>
-    {% endif %} -->
+    <p>{{ audiofile.filename }}</p>
+    <h1>Perceived Emotion:</h1>
+    {% if prediction == '1' %}
+    <h2 style="color:blue;">Neutral state</h2>
+    {% elif prediction == '2' %}
+    <h2 style="color:red;">Anger</h2>
+    {% elif prediction == '3' %}
+    <h2 style="color:grey;">sadness</h2>
+    {% elif prediction == '4' %}
+    <h2 style="color:green;">happiness</h2>
+    {% endif %}
 {% endblock%}

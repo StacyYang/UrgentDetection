@@ -55,10 +55,9 @@
     <div id="Emotion" class="tabcontent">
         <h2>Emotion Prediction from Audio</h2>
     
-        <form action="{{ url_for('reveal') }}" method="POST">
-            <label for="audiofile">Select an audio file:</label>
-            <input type="file" id="audiofile" name="audiofile"><br><br>
-
+        <form action="{{ url_for('reveal') }}" method="POST" enctype="multipart/form-data">
+            <label for="wav">Select an audio file (WAV):</label>
+            <input type="file" id="file" name="file" accept=".wav"><br><br>
             <input type="submit" class="btn-info" value="Run Analysis">
         </form>
     </div>
