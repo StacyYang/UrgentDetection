@@ -13,14 +13,11 @@ from transformers import pipeline
 from flask import Flask, render_template, request, redirect, url_for, abort
 from werkzeug.utils import secure_filename
 
-from sklearn.linear_model import LogisticRegression
-
 app = Flask(__name__)
 
 app.config['UPLOAD_EXTENSIONS'] = ['.wav']
 app.config['UPLOAD_PATH'] = 'uploads'
 
-model_log = pickle.load(open("./saved_models/logistic_regression.pkl", "rb"))
 # Bert 
 bert_tokenizer = BertTokenizer.from_pretrained("./bert_base_model")
 bert_model = BertForSequenceClassification.from_pretrained("./bert_base_model")
