@@ -54,8 +54,20 @@
 
     <div id="Emotion" class="tabcontent">
         <h2>Emotion Prediction from Audio</h2>
-    
+
         <form action="{{ url_for('reveal') }}" method="POST" enctype="multipart/form-data">
+
+            <p>Please select your desired algorithmic model for emotion prediction:</p>
+            <input type="radio" id="logreg" name="model" value="LOGISTIC REGRESSION">
+            <label for="logreg">Logistic Regression</label><br>
+            
+            <input type="radio" id="multinb" name="model" value="MULTINOMIAL NB">
+            <label for="multinb">Multinomial Naive Bayes</label><br>
+
+            <input type="radio" id="randforest" name="model" value="RANDOM FOREST">
+            <label for="randforest">Random Forest</label><br><br>
+            
+
             <label for="wav">Select an audio file (WAV):</label>
             <input type="file" id="file" name="file" accept=".wav"><br><br>
             <input type="submit" class="btn-info" value="Run Analysis">

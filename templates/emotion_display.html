@@ -15,6 +15,8 @@
 {% block content %}
     <h1>Audio File:</h1>
     <p>{{ audiofile.filename }}</p>
+    <h1>Classifier Type:</h1>
+    <p>{{ model }}</p>
     <h1>Perceived Emotion:</h1>
     {% if prediction == '1' %}
     <h2 style="color:blue;">Neutral state</h2>
