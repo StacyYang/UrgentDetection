@@ -132,10 +132,20 @@ def reveal():
     features_all = list(extract_features(signal, sr))
     df = df.append(pd.DataFrame(features_all, index=columns_plus).transpose(), ignore_index=True)
 
-    speech_prediction = model_log.predict(df)[0]
+    model_type = request.form['model']
+
+    if model_type == "LOGISTIC REGRESSION":
+        classifier = pickle.load(open("./saved_models/logistic_regression.pkl", "rb"))
+    elif model_type == "MULTINOMIAL NB":
+        classifier = pickle.load(open("./saved_models/MultinomialNB.pkl", "rb"))
+    else:
+        classifier = pickle.load(open("./saved_models/randomforest.pkl", "rb"))
+
+    speech_prediction = classifier.predict(df)[0]
+
     
-    return render_template('emotion_display.html',
-                        audiofile=audio_file, prediction=speech_prediction)
+    return render_template('emotion_display.html', audiofile=audio_file, 
+                    model=model_type, prediction=speech_prediction, )
 
 if __name__ == '__main__':
 	app.run(debug=True)
